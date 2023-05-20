@@ -1,0 +1,13 @@
+ae_prototype:
+  outputs:
+    dev:
+      dataset: curated_zone
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: us-central1
+      method: oauth
+      priority: interactive
+      project: mlops-zoomcamp-360507
+      threads: 4
+      type: bigquery
+  target: dev
