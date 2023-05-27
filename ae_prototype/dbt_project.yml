@@ -40,3 +40,7 @@ models:
     warehouse:
       +materialized: view
       +schema: dwh_northwind
+    
+    analytics_obt:
+      +materialized: table
+      +schema: obt_northwind
