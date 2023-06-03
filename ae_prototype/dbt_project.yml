@@ -40,6 +40,10 @@ models:
     warehouse:
       +materialized: view
       +schema: dwh_northwind
+      dimensions:
+        +materialized: view
+      facts:
+        +materialized: table
     
     analytics_obt:
       +materialized: table
