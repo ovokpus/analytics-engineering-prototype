@@ -2,7 +2,7 @@
 
 This project implements the use of Analytics Engineering Best practices to build a dimensional data model, using dbt (data build tool) and BigQuery.
 
-[!image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/dbt-bigquery.png)
+![image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/dbt-bigquery.png)
 
 ## Hypothetical use case
 This is an import-export company that trades around the world for specialty foods. Their existing architecture is mostly a mix of on-premise and legacy systems, including a relational database as their primary operational database. This is where all the sales transactions are recorded between the company and its customers. This same database is also being used to generate reports and build analytics solutions.
@@ -20,7 +20,7 @@ The Dataset used is the publicly available northwind database, which is a sample
 
 ### OLTP data to be migrated
 Database Diagram
-[!image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/northwind-oltp-erd.png)
+![image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/northwind-oltp-erd.png)
 
 ---
 
@@ -43,7 +43,7 @@ Allows customers to understand their purchase orders, how much and when they are
 
 ### Architecture Design
 The architecture for this is a Dimensional Data Warehouse, with a Dimensionally Modeled layer within BigQuery
-[!image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/Architecture.png)
+![image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/Architecture.png)
 
 ### Dimensional Modelling
 #### What
@@ -57,7 +57,7 @@ A Dimensional Model is a denormalized Data Warehouse structure, optimized for fa
 ---
 
 ### Physical Data Warehouse design and implementation
-[!image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/ae-bootcamp-erd-physical.drawio.png)
+![image](https://github.com/ovokpus/analytics-engineering-prototype/blob/main/img/ae-bootcamp-erd-physical.drawio.png)
 
 ---
 
