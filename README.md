@@ -83,6 +83,10 @@ pip install pandas
 python dashboard/test_metrics.py
 ```
 
+## Demo
+
+[assets/northwind_trading_desk_walkthrough.mp4](assets/northwind_trading_desk_walkthrough.mp4) is a one-minute pass over the desk while Compose is running. It starts on Overview (net sales $68,137, 40 orders, purchase cost $35,484, 12 products below reorder), opens Sales, sets Category to Beverages (Beer, Green Tea, and Chai), sets the category back to All, then walks through Customers and Inventory, including the reorder table.
+
 ## How the pieces fit
 
 ```mermaid
