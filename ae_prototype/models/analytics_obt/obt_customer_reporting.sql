@@ -37,7 +37,7 @@ with source as (
         e.web_page        as employee_web_page,
         e.notes           as employee_notes,
         e.attachments     as employee_attachments,
-        p.product_id,
+        coalesce(p.product_id, po.product_id) as product_id,
         p.product_code,
         p.product_name,
         p.description,
@@ -71,7 +71,7 @@ with source as (
         po.approved_by,
         po.approved_date,
         po.submitted_by,
-        current_timestamp() as insertion_timestamp,
+        {{ dbt.current_timestamp() }} as insertion_timestamp
     from {{ ref('fact_purchase_order') }} po
     left join {{ ref('dim_customer') }} c
     on c.customer_id = po.customer_id

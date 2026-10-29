@@ -1,4 +1,5 @@
 ae_prototype:
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"
   outputs:
     dev:
       dataset: curated_zone
@@ -10,4 +11,13 @@ ae_prototype:
       project: mlops-zoomcamp-360507
       threads: 4
       type: bigquery
-  target: dev
+    # Local docker warehouse. The password is a demo default, not a production secret.
+    local:
+      type: postgres
+      host: "{{ env_var('POSTGRES_HOST', 'localhost') }}"
+      port: "{{ env_var('POSTGRES_PORT', '5432') | as_number }}"
+      user: "{{ env_var('POSTGRES_USER', 'analytics') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD', 'analytics') }}"
+      dbname: "{{ env_var('POSTGRES_DB', 'northwind') }}"
+      schema: "{{ env_var('POSTGRES_SCHEMA', 'analytics') }}"
+      threads: 4
