@@ -1,15 +1,18 @@
-Welcome to your new dbt project!
+# ae_prototype
 
-### Using the starter project
+This is the dbt project. The warehouse, the seed, and the trading desk are wired from the repository root.
 
-Try running the following commands:
-- dbt run
-- dbt test
+Run the whole thing from there:
 
+```bash
+docker compose up --build
+```
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+The desk is at [http://localhost:8501](http://localhost:8501) after `dbt run` and `dbt test` succeed.
+
+How the models fit together, and how to rebuild after a SQL change, is in the [root README](../README.md). What has to happen before this is a real environment is in [PRODUCTIONIZING.md](../PRODUCTIONIZING.md).
+
+Targets:
+
+- `local` is Postgres, used by Docker Compose.
+- `dev` is BigQuery. It stays the default if you run dbt by hand with GCP credentials and no `DBT_TARGET`.

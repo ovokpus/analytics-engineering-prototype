@@ -1,6 +1,6 @@
 with source as (
     select
-        p.product_id,
+        coalesce(p.product_id, i.product_id) as product_id,
         p.product_code,
         p.product_name,
         p.description,
@@ -22,7 +22,7 @@ with source as (
         i.purchase_order_id,
         i.customer_order_id,
         i.comments,
-        current_timestamp() as insertion_timestamp,
+        {{ dbt.current_timestamp() }} as insertion_timestamp
     from {{ ref('fact_inventory') }} i
     left join {{ ref('dim_product') }} p
     on p.product_id = i.product_id

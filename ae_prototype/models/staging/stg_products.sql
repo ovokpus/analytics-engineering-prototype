@@ -12,11 +12,12 @@ with source as (
            discontinued,
            minimum_reorder_quantity,
            category,
-           attachments,
+           attachments
     from {{ source('northwind', 'products') }}
-    where supplier_ids not like "%;%"
+    -- Single quotes work in both BigQuery and Postgres. Double quotes are identifiers.
+    where supplier_ids not like '%;%'
 )
 select 
     *,
-    current_timestamp() as ingestion_timestamp
+    {{ dbt.current_timestamp() }} as ingestion_timestamp
 from source

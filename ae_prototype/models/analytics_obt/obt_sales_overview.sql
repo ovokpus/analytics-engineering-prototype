@@ -37,7 +37,7 @@ with source as (
         e.web_page        as employee_web_page,
         e.notes           as employee_notes,
         e.attachments     as employee_attachments,
-        p.product_id,
+        coalesce(p.product_id, s.product_id) as product_id,
         p.product_code,
         p.product_name,
         p.description,
@@ -62,7 +62,7 @@ with source as (
         s.order_date,
         s.shipped_date,
         s.paid_date,
-        current_timestamp() as insertion_timestamp,
+        {{ dbt.current_timestamp() }} as insertion_timestamp
     from {{ ref('fact_sales') }} s
     left join {{ ref('dim_customer') }} c
     on c.customer_id = s.customer_id

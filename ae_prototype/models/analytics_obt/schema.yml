@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: obt_sales_overview
+    description: >
+      Sales reporting table. One row per deduplicated order line from
+      fact_sales, with customer, employee, and product attributes attached.
+      Net revenue in the dashboard is quantity * unit_price * (1 - discount).
+
+  - name: obt_customer_reporting
+    description: >
+      Customer reporting table. One row per purchase-order line linked to a
+      customer who bought the same product. Header amounts such as
+      payment_amount repeat on every line and across that customer fan-out,
+      so cost totals must be deduplicated back to the purchase line.
+
+  - name: obt_product_inventory
+    description: >
+      Inventory reporting table. One row per inventory transaction, with
+      product attributes attached. Quantity is a positive count. Transaction
+      type 1 is purchased, 2 is sold, 3 is on hold, and 4 is waste.

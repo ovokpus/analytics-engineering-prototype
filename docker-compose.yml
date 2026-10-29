@@ -1,0 +1,75 @@
+# Local Northwind stack: seed the warehouse, build the dbt models, open the desk.
+# Demo credentials only. See PRODUCTIONIZING.md before pointing this at real data.
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: analytics
+      POSTGRES_PASSWORD: analytics
+      POSTGRES_DB: northwind
+    ports:
+      - "5432:5432"
+    volumes:
+      - northwind_pg:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U analytics -d northwind"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+
+  dbt:
+    build:
+      context: .
+      dockerfile: docker/dbt/Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DBT_TARGET: local
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: analytics
+      POSTGRES_PASSWORD: analytics
+      POSTGRES_DB: northwind
+      POSTGRES_SCHEMA: analytics
+      DBT_SEND_ANONYMOUS_USAGE_STATS: "false"
+      DO_NOT_TRACK: "1"
+    volumes:
+      - ./ae_prototype:/usr/app/ae_prototype
+      - ./profiles.yml:/root/.dbt/profiles.yml:ro
+    restart: "no"
+
+  dashboard:
+    build:
+      context: ./dashboard
+    depends_on:
+      dbt:
+        condition: service_completed_successfully
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: analytics
+      POSTGRES_PASSWORD: analytics
+      POSTGRES_DB: northwind
+      OBT_SCHEMA: obt_northwind
+    ports:
+      - "8501:8501"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health')",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  northwind_pg:
