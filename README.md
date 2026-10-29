@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.jpg" alt="Spice jars linked by brass rods in a star around a central jar of star anise" width="100%"></p>
+
 # Analytics Engineering Prototype Project
 
 This project implements the use of Analytics Engineering Best practices to build a dimensional data model, using dbt (data build tool) and BigQuery.
