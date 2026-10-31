@@ -1,6 +1,6 @@
-<p align="center"><img src="assets/banner.jpg" alt="Spice jars linked by brass rods in a star around a central jar of star anise" width="100%"></p>
-
 # Northwind trading desk
+
+<p align="center"><img src="assets/banner.jpg" alt="Spice jars linked by brass rods in a star around a central jar of star anise" width="100%"></p>
 
 A specialty-food importer is tired of running reports on the same database that takes the orders. This repo is the analytics path that gets those reports off the operational system: land the extract, stage it, build a star schema, publish three one-big-table models, and open a desk a person can actually click.
 
