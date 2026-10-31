@@ -8,6 +8,10 @@ You can run the whole path on a laptop. Docker Compose loads a Postgres warehous
 
 The BigQuery profile is still here for the cloud warehouse. Local development does not need a GCP login.
 
+## Business case
+
+Small distributors often run reports straight against their order system, which slows order entry and lets every report define sales its own way. This prototype moves reporting to a dbt star schema with tested, shared definitions and three report-ready tables behind a Streamlit desk. It runs on a laptop with Postgres or in BigQuery, where this volume fits inside the free monthly tier. [docs/BUSINESS_CASE.md](docs/BUSINESS_CASE.md) covers the use cases, an illustrative ROI model and the limits.
+
 ## Run it
 
 You need Docker with Compose v2. From the repo root:
