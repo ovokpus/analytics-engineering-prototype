@@ -41,7 +41,7 @@ These figures are **illustrative assumptions**, apart from the BigQuery price.
 |---|---|---|
 | Hours a week spent producing and reconciling reports by hand | 8 | Assumption |
 | Share removed by a tested model and self-serve desk | 60% | Assumption |
-| Analyst hourly cost | US$70 | BLS May 2024 median for data scientists, used as a proxy for an analyst: about $54 an hour ([BLS](https://www.bls.gov/ooh/math/data-scientists.htm)). Multiplied by an assumed 1.3. |
+| Analyst hourly cost | US$70 | BLS May 2024 median for data scientists, used as a proxy for an analyst: about $54 an hour ([BLS](https://www.bls.gov/news.release/archives/ocwage_04022025.pdf)). Multiplied by an assumed 1.3. |
 | Data scanned a month | under 1 TiB | Assumption for a business of this size |
 
 Labour saved: 8 × 52 × 60% ≈ **250 hours, about US$17,500 a year**. Warehouse query cost: **US$0** inside BigQuery's free monthly TiB, plus small storage charges. The benefit that isn't counted is order entry that no longer slows down when someone runs a report.
@@ -65,4 +65,4 @@ Labour saved: 8 × 52 × 60% ≈ **250 hours, about US$17,500 a year**. Warehous
 
 - Google Cloud, BigQuery pricing: https://cloud.google.com/bigquery/pricing
 - Gartner, Data Quality topic page ($12.9M figure): https://www.gartner.com/en/data-analytics/topics/data-quality
-- U.S. Bureau of Labor Statistics, Data Scientists: https://www.bls.gov/ooh/math/data-scientists.htm
+- U.S. Bureau of Labor Statistics, OEWS May 2024 (Data Scientists): https://www.bls.gov/news.release/archives/ocwage_04022025.pdf
